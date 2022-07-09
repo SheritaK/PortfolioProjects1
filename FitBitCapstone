@@ -1,5 +1,6 @@
 /* This project was completed using BigQuery Sandbox at the following link 
-https://console.cloud.google.com/bigquery?sq=401594842678:7d298cf002c94d319825c90418e3f31b */
+https://console.cloud.google.com/bigquery?sq=401594842678:7d298cf002c94d319825c90418e3f31b
+I looked at the correlation of steps taken by participants and how many calories they burned. */
 
 # Looking at the average calories burned per participant in the daily_calories table 
 SELECT
