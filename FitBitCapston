@@ -1,0 +1,31 @@
+/* This project was completed using BigQuery Sandbox at the following link 
+https://console.cloud.google.com/bigquery?sq=401594842678:7d298cf002c94d319825c90418e3f31b */
+
+# Looking at the average calories burned per participant in the daily_calories table 
+SELECT
+  Id, 
+  AVG(Calories) as AverageCalories
+FROM `citric-energy-350623.Fitbit_Capstone.daily_calories`
+GROUP BY Id
+ORDER BY Id;
+
+# Looking at the average steps taken per participant in the daily_steps table
+SELECT
+  Id, 
+  AVG(StepTotal)
+FROM `citric-energy-350623.Fitbit_Capstone.daily_steps`
+GROUP BY Id
+ORDER BY Id;
+
+
+# Looking at the two table joined to see if there is a correlation between the steps taken and calories burned
+SELECT
+  DISTINCT(daily_activity2.Id), 
+  COUNT(daily_steps.ActivityDay) AS Total_Activity_Days, 
+  SUM(daily_activity2.Calories) AS Total_Calories,
+  SUM(daily_steps.StepTotal) AS Total_Steps
+FROM Fitbit_Capstone.daily_activity2
+  JOIN Fitbit_Capstone.daily_steps
+  ON daily_activity2.id = daily_steps.id
+GROUP BY(daily_activity2.Id)
+ORDER BY (Id);
